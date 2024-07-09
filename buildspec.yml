@@ -3,13 +3,10 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: openjdk-22
     commands:
-      - wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.15.0/flyway-commandline-7.15.0-linux-x64.tar.gz | tar xvz
   build:
     commands:
       - ./mvnw clean install
-      - ./flyway-7.15.0/flyway -url=$FLYWAY_URL -user=$FLYWAY_USER -password=$FLYWAY_PASSWORD migrate
 env:
   variables:
     FLYWAY_URL: jdbc:mysql://localhost:3306/aws-codepipeline
